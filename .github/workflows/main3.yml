@@ -1,0 +1,24 @@
+# This is a basic workflow to help you get started with Actions
+
+name: test
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: main
+  pull_request:
+    branches: main
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: acefei/sync-repo-action@master
+      with:
+        ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+        target-url: https://gitee.com/pawan_06d2/test.git
