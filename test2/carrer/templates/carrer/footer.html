@@ -1,0 +1,89 @@
+{% load static %}
+<div class="footer-end">
+  <div class="up-footer">
+
+    <div class="first" data-aos="fade-right">
+      <div class="footer-logo">
+        <img src="{% static 'images/d-logo.png' %}" alt="logo"><b>devtron</b></img>
+      </div>
+      <p class="para">
+        An open-source release orchestration & CI/CD platform for Kubernetes
+
+      </p>
+      <p class="social-heading">Connect With Us</p>
+      <div class="socials">
+        <a href="" target=""><img src="https://img.icons8.com/fluent/48/000000/linkedin.png" /></a>
+        <a href="" target=""><img src="https://img.icons8.com/fluent/48/000000/facebook-new.png" /></a>
+        <a href="" target=""><img src="https://img.icons8.com/fluent/48/000000/twitter.png" /></a>
+        <a href="" target=""><img src="https://img.icons8.com/fluent/48/000000/youtube-play.png" /></a>
+      </div>
+    </div>
+
+    <div class="second vert-links" data-aos="fade-up">
+      <p class="heading">Pages</p>
+      <a href="{% url 'index' %}" style="text-decoration: none; color: inherit;"><p>Home</p></a>
+      <a href="" style="text-decoration: none; color: inherit;"><p>Blog</p></a>
+      <a href="{% url 'jobs' %}" style="text-decoration: none; color: inherit;"><p>Apply</p></a>
+      <p>Support</p>
+    </div>
+    <div class="third vert-links" data-aos="fade-down">
+      <p class="heading">Recent Blogs</p>
+      <p>Blog 1</p>
+      <p>Blog 2</p>
+      <p>Blog 3</p>
+      <p>Blog 4</p>
+    </div>
+    <div class="fourth" data-aos="fade-left">
+      <!-- <p>Join Our Community</p> -->
+      <a href="">
+        <img src="{% static 'images/community.jpeg' %}" alt="">
+      </a>
+    </div>
+  </div>
+
+  <!-- Down Footer -->
+  <div class="down-footer">
+    <p>@2021 DevtronLabs. All rights reserved</p>
+  </div>
+</div>
+
+
+<div class="footer-mobile-view">
+  <div class="footer-mv-upper" data-aos="fade-right">
+    <div class="devtron">
+      <img src="{% static 'images/d-logo.png' %}" alt="logo">
+    </div>
+    <div class="devtron-name">
+      devtron
+    </div>
+  </div>
+  <div data-aos="fade-up">
+    <p class="footer-mv-para">
+      An open-source release orchestration & CI/CD platform for Kubernetes
+    </p>
+  </div>
+  
+  <div data-aos="fade-up">
+    <p class="footer-mv-social-heading">Connect With Us</p>
+    <div class="footer-mv-socials">
+      <a href="" target=""><img src="https://img.icons8.com/fluent/48/000000/linkedin.png" /></a>
+      <a href="" target=""><img src="https://img.icons8.com/fluent/48/000000/facebook-new.png" /></a>
+      <a href="" target=""><img src="https://img.icons8.com/fluent/48/000000/twitter.png" /></a>
+      <a href=""><img src="https://img.icons8.com/fluent/48/000000/youtube-play.png" /></a>
+    </div>
+  </div>
+
+  <div data-aos="fade-right">
+    <p class="footer-mv-social-heading">Join Our Community</p>
+  </div>
+  <div class="footer-mv-community" data-aos="zoom-in">
+    <!-- <p>Join Our Community</p> -->
+    <a href=""><img src="{% static 'images/community.jpeg' %}" alt=""></a>
+  </div>
+
+  <hr style="width: 80%; margin-top: 8vh;">
+  <div class="down-footer-mv">
+    <p>@2021 DevtronLabs. All rights reserved</p>
+  </div>
+</div>
+
