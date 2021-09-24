@@ -1,0 +1,209 @@
+apiVersion: kops/v1alpha2
+kind: Cluster
+metadata:
+  name: prod.devtron.ai
+spec:
+  api:
+    loadBalancer:
+      crossZoneLoadBalancing: false
+      type: Public
+  authorization:
+    rbac: {}
+  kubeAPIServer:
+    enableAggregatorRouting: true
+    runtimeConfig:
+      # HPA Multiple Metrics via Metrics-server
+      autoscaling/v2beta1: "true"
+    admissionControl:
+      - NamespaceLifecycle
+      - LimitRanger
+      - ServiceAccount
+      - PersistentVolumeLabel
+      - DefaultStorageClass
+      - DefaultTolerationSeconds
+      - MutatingAdmissionWebhook
+      - ValidatingAdmissionWebhook
+      - ResourceQuota
+      - NodeRestriction
+      - Priority
+  kubelet:
+    kubeReserved:
+        cpu: "0.3"
+        memory: "500Mi"
+        ephemeral-storage: "1Gi"
+    kubeReservedCgroup: "/kube-reserved"
+    kubeletCgroups: "/kube-reserved"
+    runtimeCgroups: "/kube-reserved"
+    systemReserved:
+        cpu: "0.3"
+        memory: "500Mi"
+        ephemeral-storage: "1Gi"
+    systemReservedCgroup: "/system-reserved"
+    enforceNodeAllocatable: "pods,system-reserved,kube-reserved"
+    anonymousAuth: false
+    authenticationTokenWebhook: true
+    authorizationMode: Webhook
+  kubeControllerManager:
+    horizontalPodAutoscalerUseRestClients: true   # required for HPA
+  externalPolicies:
+    node:
+    - arn:aws:iam::420951305117:policy/kops-cluster-policy
+  channel: stable
+  cloudProvider: aws
+  etcdClusters:
+  - etcdMembers:
+    - instanceGroup: master
+      name: master
+    enableEtcdTLS: true
+    enableTLSAuth: true
+    name: main
+  - etcdMembers:
+    - instanceGroup: master
+      name: master
+    enableEtcdTLS: true
+    enableTLSAuth: true
+    name: events
+  iam:
+    allowContainerRegistry: true
+    legacy: false
+  kubernetesApiAccess:
+  - 0.0.0.0/0
+  kubernetesVersion: 1.21.4
+  networkCIDR: 172.31.0.0/16
+  networkID: vpc-a1f1efc9
+  nonMasqueradeCIDR: 100.64.0.0/10
+  networking:
+    calico:
+      crossSubnet: true
+  sshAccess:
+  - 0.0.0.0/0
+  subnets:
+  - cidr: 172.31.224.0/20
+    id: subnet-0da33dc5e55ff7f62
+    name: utility-us-east-2a
+    type: Utility
+    zone: us-east-2a
+  - cidr: 172.31.240.0/20
+    id: subnet-0d1feccb33ca464f0
+    name: utility-us-east-2b
+    type: Utility
+    zone: us-east-2b
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  labels:
+    kops.k8s.io/cluster: prod.devtron.ai
+  name: node-od
+spec:
+  additionalSecurityGroups:
+  - sg-0d23522a61413f202
+  cloudLabels:
+    k8s.io/cluster-autoscaler/enabled: ""
+    k8s.io/cluster-autoscaler/prod.devtron.ai: owned
+  machineType: c5.large
+  maxSize: 1
+  minSize: 1
+  nodeLabels:
+    diskType: gp2
+    family: c5
+    kops.k8s.io/instancegroup: node-od
+    lifeCycle: ondemand
+    purpose: prod
+    type: c5.large
+  role: Node
+  rootVolumeSize: 25
+  rootVolumeType: gp2
+  subnets:
+  - utility-us-east-2b
+  taints:
+  - dedicated=prod:NoSchedule
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  labels:
+    kops.k8s.io/cluster: prod.devtron.ai
+  name: ci-node
+spec:
+  cloudLabels:
+    k8s.io/cluster-autoscaler/enabled: ""
+    k8s.io/cluster-autoscaler/prod.devtron.ai: owned
+  machineType: c5n.xlarge
+  maxPrice: "0.15"
+  maxSize: 4
+  minSize: 0
+  mixedInstancesPolicy:
+    instances:
+    - r4.xlarge
+    - m5a.xlarge
+    - c5n.xlarge
+    onDemandAboveBase: 0
+    onDemandBase: 0
+  nodeLabels:
+    dedicated: ci
+    diskType: standard
+    kops.k8s.io/instancegroup: ci-node
+    lifeCycle: spot
+    purpose: general
+  role: Node
+  rootVolumeSize: 160
+  rootVolumeType: gp2
+  subnets:
+  - utility-us-east-2a
+  taints:
+  - dedicated=ci:NoSchedule
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  labels:
+    kops.k8s.io/cluster: prod.devtron.ai
+  name: master
+spec:
+  machineType: m5.large
+  maxSize: 1
+  minSize: 1
+  nodeLabels:
+    diskType: gp2
+    family: m5
+    kops.k8s.io/instancegroup: master
+    lifeCycle: ondemand
+    type: m5.large
+  role: Master
+  rootVolumeSize: 25
+  rootVolumeType: gp2
+  subnets:
+  - utility-us-east-2a
+---
+apiVersion: kops.k8s.io/v1alpha2
+kind: InstanceGroup
+metadata:
+  labels:
+    kops.k8s.io/cluster: prod.devtron.ai
+  name: nodes
+spec:
+  cloudLabels:
+    k8s.io/cluster-autoscaler/enabled: ""
+    k8s.io/cluster-autoscaler/prod.devtron.ai: owned
+  machineType: c5n.xlarge
+  maxPrice: "0.50"
+  maxSize: 2
+  minSize: 1
+  mixedInstancesPolicy:
+    instances:
+    - r4.xlarge
+    - m5a.xlarge
+    - c5n.xlarge
+    onDemandAboveBase: 0
+    onDemandBase: 0
+  nodeLabels:
+    diskType: gp2
+    kops.k8s.io/instancegroup: nodes
+    lifeCycle: spot
+    purpose: general
+  role: Node
+  rootVolumeSize: 30
+  rootVolumeType: gp2
+  subnets:
+  - utility-us-east-2a
