@@ -203,7 +203,7 @@ spec:
     lifeCycle: spot
     purpose: general
   role: Node
-  rootVolumeSize: 30
+  rootVolumeSize: 31
   rootVolumeType: gp2
   subnets:
   - utility-us-east-2a
