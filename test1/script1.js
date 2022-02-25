@@ -6,5 +6,5 @@ export let options = {
 };
 export default function () {
   http.get('http://test.k6.io');
-  sleep(8);
+  sleep(1);
 }
