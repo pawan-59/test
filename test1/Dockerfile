@@ -6,6 +6,7 @@ ARG APP_NAME
 
 EXPOSE 80
 RUN echo ${APP_NAME}
+python3
 ENTRYPOINT [ "httpd" ]
 
 CMD [ "-DFOREGROUND" ]
