@@ -1,0 +1,4 @@
+[submodule "test1"]
+	path = test1/
+	url = https://github.com/pawan-59/git-repo-sync.git
+	branch = master
