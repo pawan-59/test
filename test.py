@@ -17,7 +17,7 @@ embed = DiscordEmbed(
 )
 
 embed.set_author(
-    name="Devtron",
+    name="Devtronn",
     url="https://devtron.ai/",
     icon_url="https://avatars.githubusercontent.com/u/60952665?s=200&v=4",
 )
