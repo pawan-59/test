@@ -3,6 +3,6 @@ import { sleep } from 'k6';
 
 export default function () {
   http.get('http://test.k6.io');
-  sleep(13);
+  sleep(15);
   test
 }
