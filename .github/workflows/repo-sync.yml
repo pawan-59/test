@@ -1,4 +1,4 @@
-name: sync
+name: repo-sync
 
 # Controls when the workflow will run
 on:
