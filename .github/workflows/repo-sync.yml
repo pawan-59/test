@@ -15,13 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-         sudo apt update
-         sudo apt install gh
+         #sudo apt update
+         #sudo apt install gh
          export GIT_ASKPASS=/git-ask-pass.sh
          export GIT_USERNAME="${GIT_CONFIG_NAME}"
          export GIT_PASSWORD="${GH_TOKEN}"
          export ENTERPRISE_REPO="https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/pawan-59/enterprise.git"
-         echo "${GIT_CONFIG_NAME}"
+         echo "test${GIT_CONFIG_NAME}:${GH_TOKEN}"
          git clone https://github.com/devtron-labs/devtron
          git clone $ENTERPRISE_REPO
 
