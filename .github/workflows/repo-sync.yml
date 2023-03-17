@@ -19,7 +19,7 @@ jobs:
          sudo apt install gh
          export GIT_ASKPASS=/git-ask-pass.sh
          #export GIT_USERNAME=$
-         git clone https://github.com/devtron-labs/devtron oss
+         git clone https://github.com/devtron-labs/devtron /oss
 
          cd /oss && export GIT_COMMIT_ID=`git log --format="%H" -n 1`
 
