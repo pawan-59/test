@@ -20,7 +20,7 @@ jobs:
          export GIT_ASKPASS=/git-ask-pass.sh
          export GIT_USERNAME="${GIT_CONFIG_NAME}"
          export GIT_PASSWORD="${GH_TOKEN}"
-         export ENTERPRISE_REPO="https://${GIT_CONFIG_NAME}:${GIT_PASSWORD}@github.com/pawan-59/enterprise"
+         export ENTERPRISE_REPO="https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/pawan-59/enterprise"
          git clone https://github.com/devtron-labs/devtron
          git clone $ENTERPRISE_REPO
 
