@@ -2,19 +2,26 @@ name: repo-sync
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches:    
-      - 'main'
+    branches:
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   sync:
     runs-on: ubuntu-latest
-    name: Git Repo Sync
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - uses: pawan-59/git-repo-sync@enterprise-repo-sync
-      with:
-        script-file: "repo-sync"
+    - run: |
+         sudo apt update
+         sudo apt install gh
+         export GIT_ASKPASS=/git-ask-pass.sh
+         #export GIT_USERNAME=$
+         git clone https://github.com/devtron-labs/devtron oss
+
+         cd /oss && export GIT_COMMIT_ID=`git log --format="%H" -n 1`
+
+         export GIT_COMMIT=${GIT_COMMIT_ID:0:8}
+         echo $GIT_COMMIT
