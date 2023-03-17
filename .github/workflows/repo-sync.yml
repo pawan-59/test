@@ -29,7 +29,7 @@ jobs:
 
          export GIT_COMMIT=${GIT_COMMIT_ID:0:8}
          echo $GIT_COMMIT
-         git config --global user.email $GIT_TARGET_EMAIL
+         git config --global user.email $GIT_CONFIG_EMAIL
          git config --global user.name $GIT_USERNAME
 
          git status && git checkout main && git pull
