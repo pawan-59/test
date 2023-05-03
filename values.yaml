@@ -1,0 +1,24 @@
+component:
+  dashboard:
+    image: quay.io/dashboard:asdfdfs-123-12312
+  orchestrator:
+    image: quay.io/orchestrator:asdfdfs-123-12312
+  lens:
+    image: quay.io/lens:asdfdfs-123-12312
+  image-scanner:
+    image: quay.io/image-scanner:asdfdfs-123-12312
+  kubewatch:
+    image: quay.io/kubewatch:asdfdfs-123-12312
+  kubelink:
+    image: quay.io/kubelink:asdfdfs-123-12312
+  notifier:
+    image: quay.io/notifier:asdfdfs-123-12312
+  casbin:
+    image: quay.io/casbin:asdfdfs-123-12312
+  app-sync:
+    image: quay.io/app-sync:asdfdfs-123-12312
+  git-sensor:
+    image: quay.io/git-sensor:asdfdfs-123-12312
+  ci-runner
+    image: quay.io/ci-runner:asdfdfs-123-12312
+    
