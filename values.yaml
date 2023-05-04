@@ -1,6 +1,6 @@
 component:
   dashboard:
-    image: quay.io/dashboard:asdfdfs-123-12312
+    image: quay.io/devtron/dashboard:asdfdfs-123-12312
   orchestrator:
     image: quay.io/orchestrator:asdfdfs-123-12312
   lens:
