@@ -34,5 +34,5 @@ component:
     ci_runner_ci_artifact_id: 1234
   test:
     quay.io/devtron/test:9f6aab77-476-13576"
-    test_ci_artifact_id: 1234
+    test_ci_artifact_id: 11496
     
