@@ -33,6 +33,5 @@ component:
     image: quay.io/ci-runner:asdfdfs-123-12312
     ci_runner_ci_artifact_id: 1234
   test:
-    image: quay.io/devtron/test:9f6aab77-476-13576"
+    image: "quay.io/devtron/test:9f6aab77-476-13576"
     test_ci_artifact_id: 11496
-    
