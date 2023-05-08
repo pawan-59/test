@@ -29,7 +29,7 @@ component:
   git-sensor:
     image: quay.io/git-sensor:asdfdfs-123-12312
     git_sensor_ci_artifact_id: 1234
-  ci-runner
+  ci-runner:
     image: quay.io/ci-runner:asdfdfs-123-12312
     ci_runner_ci_artifact_id: 1234
   test:
