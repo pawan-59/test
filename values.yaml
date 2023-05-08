@@ -22,5 +22,5 @@ component:
   ci-runner
     image: quay.io/ci-runner:asdfdfs-123-12312
   test:
-    quay.io/devtron/test:9f6aab77-476-13576
+    quay.io/devtron/test:9f6aab77-476-13576"
     
