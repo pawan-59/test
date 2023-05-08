@@ -1,26 +1,38 @@
 component:
   dashboard:
     image: quay.io/devtron/dashboard:6d988587-466-13583
+    dashboard_ci_artifact_id: 1234
   orchestrator:
     image: quay.io/orchestrator:asdfdfs-123-12312
+    orchestrator_ci_artifact_id: 1234
   lens:
     image: quay.io/lens:asdfdfs-123-12312
+    lens_ci_artifact_id: 1234
   image-scanner:
     image: quay.io/image-scanner:asdfdfs-123-12312
+    image_scanner_ci_artifact_id: 1234
   kubewatch:
     image: quay.io/kubewatch:asdfdfs-123-12312
+    kubewatch_ci_artifact_id: 1234
   kubelink:
     image: quay.io/kubelink:asdfdfs-123-12312
+    kubelink_ci_artifact_id: 1234
   notifier:
     image: quay.io/notifier:asdfdfs-123-12312
+    notifier_ci_artifact_id: 1234
   casbin:
     image: quay.io/casbin:asdfdfs-123-12312
+    casbin_ci_artifact_id: 1234
   app-sync:
     image: quay.io/app-sync:asdfdfs-123-12312
+    app_sync_ci_artifact_id: 1234
   git-sensor:
     image: quay.io/git-sensor:asdfdfs-123-12312
+    git_sensor_ci_artifact_id: 1234
   ci-runner
     image: quay.io/ci-runner:asdfdfs-123-12312
+    ci_runner_ci_artifact_id: 1234
   test:
     quay.io/devtron/test:9f6aab77-476-13576"
+    test_ci_artifact_id: 1234
     
