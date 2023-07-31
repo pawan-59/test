@@ -6,6 +6,8 @@ ARG aws_access_key_id="AKIAWPTL57XCVXS"
 
 ARG aws_secret_access_key="3wLYrlkimVmd0lFalh0MHB6doJCu28H"
 
+ARG password="qwerty@09876"
+
 ARG APP_NAME
 
 COPY . .
