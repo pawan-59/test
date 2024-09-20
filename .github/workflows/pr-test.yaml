@@ -11,8 +11,6 @@ jobs:
   update-dependencies:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-        name: test
-        with:
-          script: |
-              echo "Hello"
+      - name: test
+        run: |
+          echo "Hello"
